@@ -1,4 +1,4 @@
-" Airline theme in Visual Studio colors
+" Airline theme in vs colors
 " Modified from the solarized theme
 
 let g:airline#themes#myvs#palette = {}
@@ -39,9 +39,9 @@ function! airline#themes#myvs#refresh()
   """"""""""""""""""""""""""""""""""""""""""""""""
   " Normal mode
   if s:background == 'dark'
-    let s:N1 = [s:base3, s:blue, 'bold']
-    let s:N2 = [s:base2, s:base01, '']
-    let s:N3 = [s:base2, s:base02, '']
+    let s:N1 = [s:base02, s:blue, 'bold']
+    let s:N2 = [s:base02, (s:tty ? s:base01 : s:base0), '']
+    let s:N3 = [s:base03, s:base01, '']
   else
     let s:N1 = [s:base3, s:blue, 'bold']
     let s:N2 = [s:base03, s:base1, '']
@@ -82,9 +82,13 @@ function! airline#themes#myvs#refresh()
   " Inactive, according to VertSplit in myvs
   " (bg dark: base00; bg light: base0)
   if s:background == 'dark'
-    let s:IA = [s:base02, s:base00, '']
+    let s:IA1 = [s:base02, s:base0, '']
+    let s:IA2 = [s:base02, s:base00, '']
+    let s:IA3 = [s:base03, s:base01, '']
   else
-    let s:IA = [s:base02, s:base2, '']
+    let s:IA1 = [s:base3, s:base0, '']
+    let s:IA2 = [s:base01, s:base1, '']
+    let s:IA3 = [s:base01, s:base2, '']
   endif
 
   """"""""""""""""""""""""""""""""""""""""""""""""
@@ -101,9 +105,9 @@ function! airline#themes#myvs#refresh()
         \ }
 
   let g:airline#themes#myvs#palette.inactive = airline#themes#generate_color_map(
-        \ [s:IA[0].g, s:IA[1].g, s:IA[0].t, s:IA[1].t, s:IA[2]],
-        \ [s:IA[0].g, s:IA[1].g, s:IA[0].t, s:IA[1].t, s:IA[2]],
-        \ [s:IA[0].g, s:IA[1].g, s:IA[0].t, s:IA[1].t, s:IA[2]])
+        \ [s:IA1[0].g, s:IA1[1].g, s:IA1[0].t, s:IA1[1].t, s:IA1[2]],
+        \ [s:IA2[0].g, s:IA2[1].g, s:IA2[0].t, s:IA2[1].t, s:IA2[2]],
+        \ [s:IA3[0].g, s:IA3[1].g, s:IA3[0].t, s:IA3[1].t, s:IA3[2]])
   let g:airline#themes#myvs#palette.inactive_modified = {
         \ 'airline_c': [s:NMi[0].g, '', s:NMi[0].t, '', s:NMi[2]]}
 
